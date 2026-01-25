@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZAdvisory | Microsoft Dynamics 365 F&O Specialists</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .hero-gradient { background: linear-gradient(to right, #0f172a, rgba(15, 23, 42, 0.8), transparent); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-5">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2 text-2xl font-bold tracking-tight">
+                <div class="bg-blue-700 p-1.5 rounded-lg">
+                    <i data-lucide="building-2" class="text-white w-6 h-6"></i>
+                </div>
+                <span id="nav-logo" class="text-white">AZ<span class="text-blue-600">ADVISORY</span></span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 font-medium">
+                <a href="#services" class="nav-link text-slate-100 hover:text-blue-400 transition">Services</a>
+                <a href="#consultants" class="nav-link text-slate-100 hover:text-blue-400 transition">Consultants</a>
+                <a href="#contact" class="bg-blue-600 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-600/20">
+                    Contact Us
+                </a>
+            </div>
+
+            <button class="md:hidden text-white" id="menu-btn">
+                <i data-lucide="menu" id="menu-icon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white border-b shadow-xl p-6 flex flex-col gap-4 text-slate-900 font-medium md:hidden">
+            <a href="#services" class="mobile-link">Services</a>
+            <a href="#consultants" class="mobile-link">Consultants</a>
+            <a href="#contact" class="mobile-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center bg-slate-900 pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 hero-gradient z-10"></div>
+            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" 
+                 class="w-full h-full object-cover" alt="Modern Office">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-20 grid lg:grid-cols-2 gap-12">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-1 text-blue-400 font-semibold text-sm">
+                    <i data-lucide="globe" class="w-4 h-4"></i> Global Microsoft Specialists
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold text-white leading-[1.1]">
+                    Strategic <span class="text-blue-500 italic">ERP</span> Consulting.
+                </h1>
+                <p class="text-xl text-slate-300 leading-relaxed max-w-xl">
+                    AZAdvisory delivers high-impact **Microsoft Dynamics 365 F&O** implementations. Our professional consulting team ensures your enterprise scales without technical friction.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#contact" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 flex items-center gap-2 transition group shadow-xl shadow-blue-600/30">
+                        Inquire Now <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition w-5 h-5"></i>
+                    </a>
+                </div>
+                <div class="grid grid-cols-2 gap-6 pt-10 border-t border-white/10">
+                    <div class="flex items-center gap-2 text-slate-400">
+                        <i data-lucide="check-circle-2" class="text-blue-500 w-5 h-5"></i>
+                        <span class="text-sm font-medium">Certified F&O Architects</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-slate-400">
+                        <i data-lucide="check-circle-2" class="text-blue-500 w-5 h-5"></i>
+                        <span class="text-sm font-medium">Agile Methodology</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="max-w-3xl mb-16">
+                <h2 class="text-blue-600 font-bold uppercase tracking-widest text-sm mb-4">What we do</h2>
+                <h3 class="text-4xl font-bold text-slate-900 mb-6 italic">Specialized Microsoft D365 F&O Services</h3>
+                <p class="text-lg text-slate-600">
+                    Exclusively focused on the enterprise-tier Microsoft ecosystem, optimizing financial and supply chain processes for global scale.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 transition-all duration-500">
+                    <div class="bg-white w-16 h-16 rounded-2xl shadow-sm flex items-center justify-center text-blue-600 mb-8">
+                        <i data-lucide="cpu" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">F&O Implementation</h4>
+                    <p class="text-slate-600 leading-relaxed">Full-lifecycle deployment from strategic blueprinting to seamless global go-live and stabilization.</p>
+                </div>
+                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 transition-all duration-500">
+                    <div class="bg-white w-16 h-16 rounded-2xl shadow-sm flex items-center justify-center text-blue-600 mb-8">
+                        <i data-lucide="line-chart" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">Operational Excellence</h4>
+                    <p class="text-slate-600 leading-relaxed">Optimizing supply chains and financial workflows to reduce overhead and increase data transparency.</p>
+                </div>
+                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 transition-all duration-500">
+                    <div class="bg-white w-16 h-16 rounded-2xl shadow-sm flex items-center justify-center text-blue-600 mb-8">
+                        <i data-lucide="shield-check" class="w-8 h-8"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">Professional Consulting</h4>
+                    <p class="text-slate-600 leading-relaxed">Strategic advisory for enterprise-level digital transformation, change management, and governance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultants Section -->
+    <section id="consultants" class="py-24 px-6 bg-slate-900 text-white relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 italic">Our Professional Consulting Team</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Senior-level consultants with a proven track record in global Microsoft ERP implementations.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white/5 border border-white/10 p-10 rounded-3xl">
+                    <i data-lucide="users" class="text-blue-500 w-12 h-12 mb-6"></i>
+                    <h4 class="text-2xl font-bold mb-1">Solution Architects</h4>
+                    <p class="text-blue-400 font-semibold mb-6">Enterprise Systems Design</p>
+                    <p class="text-slate-400 leading-relaxed italic">"Expertise in designing robust architectures for complex, multi-entity ERP landscapes."</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-10 rounded-3xl">
+                    <i data-lucide="users" class="text-blue-500 w-12 h-12 mb-6"></i>
+                    <h4 class="text-2xl font-bold mb-1">Functional Experts</h4>
+                    <p class="text-blue-400 font-semibold mb-6">Finance & SCM Specialists</p>
+                    <p class="text-slate-400 leading-relaxed italic">"Translating business needs into high-performance Dynamics 365 functional processes."</p>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-10 rounded-3xl">
+                    <i data-lucide="users" class="text-blue-500 w-12 h-12 mb-6"></i>
+                    <h4 class="text-2xl font-bold mb-1">Technical Developers</h4>
+                    <p class="text-blue-400 font-semibold mb-6">X++ & Power Platform</p>
+                    <p class="text-slate-400 leading-relaxed italic">"Delivering seamless integrations and custom development for the modern enterprise."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact View Only -->
+    <section id="contact" class="py-24 px-6 bg-white">
+        <div class="max-w-4xl mx-auto bg-slate-900 rounded-[3rem] p-12 md:p-20 text-center text-white">
+            <h3 class="text-4xl font-bold mb-8 italic">Get in Touch</h3>
+            <p class="text-slate-400 text-lg mb-12">AZAdvisory is ready to help you navigate your Dynamics 365 journey. Connect with our professional consulting team today.</p>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-12">
+                <div class="flex flex-col items-center">
+                    <div class="bg-blue-600/20 p-4 rounded-2xl mb-4">
+                        <i data-lucide="mail" class="text-blue-500 w-8 h-8"></i>
+                    </div>
+                    <div class="text-xs text-slate-500 font-bold uppercase tracking-widest mb-1">Email Inquiry</div>
+                    <a href="mailto:solutions@azadvisory.com" class="text-2xl hover:text-blue-400 transition">solutions@azadvisory.com</a>
+                </div>
+                <div class="w-px h-16 bg-slate-800 hidden md:block"></div>
+                <div class="flex flex-col items-center">
+                    <div class="bg-blue-600/20 p-4 rounded-2xl mb-4">
+                        <i data-lucide="linkedin" class="text-blue-500 w-8 h-8"></i>
+                    </div>
+                    <div class="text-xs text-slate-500 font-bold uppercase tracking-widest mb-1">Professional Network</div>
+                    <span class="text-2xl">Connect on LinkedIn</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t bg-slate-50 text-center">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center justify-center gap-2 text-xl font-bold mb-4">
+                <div class="bg-blue-700 p-1.5 rounded-lg">
+                    <i data-lucide="building-2" class="text-white w-4 h-4"></i>
+                </div>
+                <span>AZ<span class="text-blue-600">ADVISORY</span></span>
+            </div>
+            <div class="text-slate-400 text-sm italic">Microsoft Dynamics 365 F&O Professional Consulting</div>
+            <div class="text-slate-400 text-xs mt-8 uppercase tracking-widest">© 2026 AZAdvisory. All rights reserved.</div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const navbar = document.getElementById('navbar');
+        const navLogo = document.getElementById('nav-logo');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('glass-nav', 'shadow-md', 'py-3');
+                navbar.classList.remove('py-5');
+                navLogo.classList.add('text-slate-900');
+                navLogo.classList.remove('text-white');
+                navLinks.forEach(link => link.classList.replace('text-slate-100', 'text-slate-600'));
+                document.getElementById('menu-btn').classList.replace('text-white', 'text-slate-900');
+            } else {
+                navbar.classList.remove('glass-nav', 'shadow-md', 'py-3');
+                navbar.classList.add('py-5');
+                navLogo.classList.remove('text-slate-900');
+                navLogo.classList.add('text-white');
+                navLinks.forEach(link => link.classList.replace('text-slate-600', 'text-slate-100'));
+                document.getElementById('menu-btn').classList.replace('text-slate-900', 'text-white');
+            }
+        });
+
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+    </script>
+</body>
+</html>
