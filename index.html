@@ -1,234 +1,507 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AZAdvisory | Microsoft Dynamics 365 F&O Specialists</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .glass-nav { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-        .hero-gradient { background: linear-gradient(to right, #0f172a, rgba(15, 23, 42, 0.8), transparent); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AZ Advisory · Expert-comptable & Consultant Dynamics 365 F&O</title>
+<meta name="description" content="Aymen Zouiten, Expert-comptable et consultant Microsoft Dynamics 365 Finance & Operations. Transformation finance des groupes : paramétrage, reprise de données, clôture, Go-Live, audit. France, Maghreb, Afrique francophone.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Cairo:wght@400;500;600&family=Noto+Kufi+Arabic:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A1730;
+    --navy-2:#0F2145;
+    --navy-3:#132a52;
+    --gold:#C9A54E;
+    --gold-l:#E4C877;
+    --cream:#F3F0E9;
+    --slate:#A9B6CC;
+    --slate-d:#7E8CA6;
+    --line:#26385C;
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Inter",system-ui,sans-serif;
+    --mono:"JetBrains Mono",monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--navy);
+    color:var(--cream);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+  a{color:inherit;text-decoration:none}
+
+  /* eyebrow / mono labels */
+  .mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+
+  /* ---------- NAV ---------- */
+  header{position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(10,23,48,.72);backdrop-filter:blur(12px);
+    border-bottom:1px solid transparent;transition:border-color .3s}
+  header.scrolled{border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{font-family:var(--mono);font-weight:500;letter-spacing:.16em;font-size:.9rem;color:var(--cream)}
+  .brand b{color:var(--gold)}
+  .nav-links{display:flex;gap:34px;align-items:center}
+  .nav-links a{font-size:.9rem;color:var(--slate);transition:color .2s}
+  .nav-links a:hover{color:var(--cream)}
+  .nav-cta{border:1px solid var(--gold);color:var(--gold-l)!important;
+    padding:9px 18px;border-radius:2px;font-size:.85rem;transition:all .2s}
+  .nav-cta:hover{background:var(--gold);color:var(--navy)!important}
+  .burger{display:none;background:none;border:0;color:var(--cream);font-size:1.5rem;cursor:pointer}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:170px 0 110px;overflow:hidden}
+  .hero-glow{position:absolute;top:-10%;left:50%;transform:translateX(-50%);
+    width:900px;height:600px;
+    background:radial-gradient(ellipse at center,rgba(201,165,78,.10),transparent 62%);
+    pointer-events:none}
+  .hero .mono{display:block;margin-bottom:26px}
+
+  /* the convergence signature */
+  .converge{display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:center;
+    margin:0 auto 40px;max-width:940px}
+  .stream{display:flex;flex-direction:column;gap:10px}
+  .stream.finance{text-align:right}
+  .stream.finance span{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--slate)}
+  .stream.tech{text-align:left}
+  .stream.tech span{font-family:var(--mono);font-size:.82rem;letter-spacing:.04em;color:var(--slate);text-transform:uppercase}
+  .axis{width:1px;align-self:stretch;background:linear-gradient(var(--navy),var(--gold),var(--navy));margin:0 34px;position:relative}
+  .axis::before{content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:9px;height:9px;background:var(--gold);border-radius:50%;box-shadow:0 0 16px 3px rgba(201,165,78,.6)}
+
+  h1{font-family:var(--serif);font-weight:500;
+    font-size:clamp(2.3rem,5.4vw,4rem);line-height:1.05;letter-spacing:-.01em;
+    text-align:center;max-width:15ch;margin:0 auto 26px}
+  h1 em{font-style:italic;color:var(--gold-l)}
+  .hero-sub{text-align:center;max-width:56ch;margin:0 auto 40px;color:var(--slate);font-size:1.08rem}
+  .hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .btn{padding:14px 28px;border-radius:2px;font-size:.95rem;font-weight:500;transition:all .2s;cursor:pointer;border:1px solid transparent;display:inline-block}
+  .btn-primary{background:var(--gold);color:var(--navy)}
+  .btn-primary:hover{background:var(--gold-l);transform:translateY(-2px)}
+  .btn-ghost{border-color:var(--line);color:var(--cream)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold-l)}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:96px 0;position:relative}
+  .sec-head{margin-bottom:56px;max-width:60ch}
+  .sec-head .mono{display:block;margin-bottom:18px}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,3.6vw,2.7rem);line-height:1.12;letter-spacing:-.01em}
+  .sec-head p{margin-top:18px;color:var(--slate);font-size:1.05rem}
+
+  /* ---------- DOUBLE ADN ---------- */
+  .adn{background:var(--navy-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .adn-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  .adn-col{padding:44px 40px}
+  .adn-col:first-child{border-right:1px solid var(--line)}
+  .adn-col .tag{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:20px;display:block}
+  .adn-col.fin .tag{font-family:var(--serif);font-style:italic;font-size:.95rem;letter-spacing:0;color:var(--gold-l);text-transform:none}
+  .adn-col.tec .tag{font-family:var(--mono);color:var(--gold-l)}
+  .adn-col h3{font-size:1.15rem;font-weight:600;margin-bottom:16px;color:var(--cream)}
+  .adn-col ul{list-style:none}
+  .adn-col li{padding:7px 0;color:var(--slate);font-size:.96rem;border-bottom:1px solid rgba(38,56,92,.5)}
+  .adn-col li:last-child{border-bottom:0}
+  .adn-col.fin li{font-family:var(--serif)}
+  .adn-col.tec li{font-family:var(--mono);font-size:.85rem}
+  .adn-statement{text-align:center;margin-top:48px;font-family:var(--serif);
+    font-size:clamp(1.3rem,2.8vw,1.9rem);font-style:italic;line-height:1.4;max-width:26ch;margin-left:auto;margin-right:auto}
+  .adn-statement b{color:var(--gold-l);font-weight:500;font-style:normal}
+
+  /* ---------- SERVICES ---------- */
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  .svc{background:var(--navy);padding:34px 28px;transition:background .25s}
+  .svc:hover{background:var(--navy-2)}
+  .svc .num{font-family:var(--mono);font-size:.75rem;color:var(--gold);letter-spacing:.1em}
+  .svc h3{font-family:var(--serif);font-weight:500;font-size:1.25rem;margin:14px 0 10px}
+  .svc p{color:var(--slate);font-size:.92rem}
+
+  /* ---------- REALISATIONS ---------- */
+  .real{background:var(--navy-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .real-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .rcard{border:1px solid var(--line);border-radius:4px;padding:30px 30px;background:var(--navy);
+    display:flex;flex-direction:column;gap:12px;transition:transform .25s,border-color .25s}
+  .rcard:hover{transform:translateY(-4px);border-color:var(--gold)}
+  .rcard .rtop{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .rcard .sector{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+  .rcard .year{font-family:var(--mono);font-size:.72rem;color:var(--slate-d)}
+  .rcard h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;line-height:1.2}
+  .rcard p{color:var(--slate);font-size:.92rem}
+  .rcard .tags{margin-top:auto;display:flex;flex-wrap:wrap;gap:8px;padding-top:6px}
+  .rcard .tags span{font-family:var(--mono);font-size:.68rem;color:var(--gold-l);border:1px solid rgba(201,165,78,.4);padding:4px 9px;border-radius:20px}
+
+  /* ---------- PARCOURS ---------- */
+  .par-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start}
+  .par-list{display:flex;flex-direction:column;gap:0}
+  .par-item{display:grid;grid-template-columns:auto 1fr;gap:22px;padding:22px 0;border-bottom:1px solid var(--line)}
+  .par-item:first-child{padding-top:0}
+  .par-item .py{font-family:var(--mono);font-size:.78rem;color:var(--gold);white-space:nowrap;padding-top:4px}
+  .par-item h3{font-size:1.05rem;font-weight:600;color:var(--cream)}
+  .par-item p{color:var(--slate);font-size:.92rem;margin-top:3px}
+  .creds{border:1px solid var(--line);border-radius:4px;padding:32px;background:var(--navy-2)}
+  .creds .mono{display:block;margin-bottom:22px}
+  .creds ul{list-style:none;display:flex;flex-direction:column;gap:16px}
+  .creds li{display:flex;gap:13px;font-size:.95rem;color:var(--cream);align-items:flex-start}
+  .creds li::before{content:"◆";color:var(--gold);font-size:.7rem;margin-top:5px}
+  .creds li span{color:var(--slate);display:block;font-size:.85rem}
+  .research{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:56px}
+  .rscard{border:1px solid var(--line);border-left:2px solid var(--gold);border-radius:4px;
+    padding:30px 32px;background:var(--navy-2)}
+  .rscard .mono{display:block;margin-bottom:14px}
+  .rscard h3{font-family:var(--serif);font-weight:500;font-size:1.4rem;line-height:1.15;margin-bottom:12px}
+  .rscard p{color:var(--slate);font-size:.94rem}
+  .par-intro{display:flex;gap:34px;align-items:center;margin-bottom:56px;max-width:none}
+  .portrait{width:132px;height:132px;border-radius:50%;object-fit:cover;
+    border:2px solid var(--gold);box-shadow:0 8px 30px rgba(0,0,0,.35);flex-shrink:0}
+  .par-intro .pi-txt{max-width:60ch}
+  .par-intro .mono{display:block;margin-bottom:16px}
+  .par-intro h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,3.6vw,2.7rem);line-height:1.12;letter-spacing:-.01em}
+  .par-intro p{margin-top:16px;color:var(--slate);font-size:1.02rem}
+  @media(max-width:860px){.par-intro{flex-direction:column;text-align:center;gap:22px}.portrait{width:120px;height:120px}}
+
+  /* ---------- CONTACT ---------- */
+  .contact{text-align:center}
+  .contact h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.1;max-width:18ch;margin:0 auto 22px}
+  .contact h2 em{font-style:italic;color:var(--gold-l)}
+  .contact .lead{color:var(--slate);max-width:52ch;margin:0 auto 40px;font-size:1.08rem}
+  .contact-methods{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
+  .cmethod{border:1px solid var(--line);border-radius:3px;padding:20px 30px;min-width:210px;transition:border-color .2s}
+  .cmethod:hover{border-color:var(--gold)}
+  .cmethod .mono{display:block;margin-bottom:8px}
+  .cmethod .val{font-size:1rem;color:var(--cream);word-break:break-word}
+  .cmethod .val{direction:ltr;unicode-bidi:embed}
+  html[dir=rtl] .cmethod{text-align:right}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);padding:40px 0}
+  .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+  .foot .brand{font-size:.85rem}
+  .foot p{font-family:var(--mono);font-size:.72rem;color:var(--slate-d);letter-spacing:.04em}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:860px){
+    .nav-links{display:none}
+    .burger{display:block}
+    .converge{grid-template-columns:1fr;gap:20px;max-width:400px}
+    .stream.finance,.stream.tech{text-align:center}
+    .axis{width:60%;height:1px;background:linear-gradient(90deg,var(--navy),var(--gold),var(--navy));margin:6px auto;justify-self:center}
+    .adn-grid{grid-template-columns:1fr}
+    .adn-col:first-child{border-right:0;border-bottom:1px solid var(--line)}
+    .svc-grid{grid-template-columns:1fr}
+    .real-grid{grid-template-columns:1fr}
+    .par-grid{grid-template-columns:1fr;gap:40px}
+    .par-item{grid-template-columns:1fr;gap:6px}
+    .research{grid-template-columns:1fr}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+
+  /* lang toggle + spotlight */
+  .nav-right{display:flex;align-items:center;gap:14px}
+  .lang-btn{background:none;border:1px solid var(--line);color:var(--slate);
+    padding:7px 13px;border-radius:2px;font-family:var(--mono);font-size:.78rem;
+    letter-spacing:.08em;cursor:pointer;transition:all .2s}
+  .lang-btn:hover{border-color:var(--gold);color:var(--gold-l)}
+  .spotlight{margin-top:22px;border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:4px;background:linear-gradient(120deg,var(--navy-2),var(--navy));
+    padding:40px 44px;display:flex;flex-direction:column;gap:14px}
+  .spotlight .mono{color:var(--gold);display:block}
+  .spotlight h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.15}
+  .spotlight p{color:var(--slate);font-size:1.02rem;max-width:72ch}
+  @media(max-width:860px){.spotlight{padding:30px 26px}}
+
+  /* Arabic / RTL */
+  html[dir=rtl] body{font-family:"Cairo",var(--sans)}
+  html[dir=rtl] h1,html[dir=rtl] h2,html[dir=rtl] .svc h3,html[dir=rtl] .rcard h3,html[dir=rtl] .spotlight h3,html[dir=rtl] .rscard h3,html[dir=rtl] .adn-col h3,html[dir=rtl] .par-item h3,html[dir=rtl] .creds li,html[dir=rtl] .adn-statement{font-family:"Noto Kufi Arabic","Cairo",var(--serif);font-style:normal}
+  html[dir=rtl] .mono,html[dir=rtl] .stream span,html[dir=rtl] .adn-col.fin li,html[dir=rtl] .adn-col.tec li,html[dir=rtl] .rcard .tags span,html[dir=rtl] .rcard .sector,html[dir=rtl] .rcard .year,html[dir=rtl] .par-item .py,html[dir=rtl] .svc .num{font-family:"Cairo",var(--mono);letter-spacing:normal;text-transform:none;font-style:normal}
+  html[dir=rtl] .stream.finance{text-align:left}
+  html[dir=rtl] .stream.tech{text-align:right}
+  html[dir=rtl] .spotlight{border-left:1px solid var(--line);border-right:3px solid var(--gold)}
+  html[dir=rtl] .rscard{border-left:1px solid var(--line);border-right:2px solid var(--gold)}
+  html[dir=rtl] .adn-col:first-child{border-right:0;border-left:1px solid var(--line)}
+</style>
 </head>
-<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+<body id="top">
 
-    <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-5">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center gap-2 text-2xl font-bold tracking-tight">
-                <div class="bg-blue-700 p-1.5 rounded-lg">
-                    <i data-lucide="building-2" class="text-white w-6 h-6"></i>
-                </div>
-                <span id="nav-logo" class="text-white">AZ<span class="text-blue-600">ADVISORY</span></span>
-            </div>
-            
-            <div class="hidden md:flex items-center gap-8 font-medium">
-                <a href="#services" class="nav-link text-slate-100 hover:text-blue-400 transition">Services</a>
-                <a href="#consultants" class="nav-link text-slate-100 hover:text-blue-400 transition">Consultants</a>
-                <a href="#contact" class="bg-blue-600 text-white px-6 py-2.5 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-600/20">
-                    Contact Us
-                </a>
-            </div>
-
-            <button class="md:hidden text-white" id="menu-btn">
-                <i data-lucide="menu" id="menu-icon"></i>
-            </button>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white border-b shadow-xl p-6 flex flex-col gap-4 text-slate-900 font-medium md:hidden">
-            <a href="#services" class="mobile-link">Services</a>
-            <a href="#consultants" class="mobile-link">Consultants</a>
-            <a href="#contact" class="mobile-link">Contact</a>
-        </div>
+<header id="hd">
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="brand">AZ<b>·</b>ADVISORY</a>
+      <div class="nav-links">
+        <a href="#adn" data-fr="Double ADN" data-en="Dual expertise" data-ar="خبرة مزدوجة">Double ADN</a>
+        <a href="#services" data-fr="Services" data-en="Services" data-ar="الخدمات">Services</a>
+        <a href="#realisations" data-fr="Réalisations" data-en="Case studies" data-ar="الإنجازات">Réalisations</a>
+        <a href="#parcours" data-fr="Parcours" data-en="Background" data-ar="المسار">Parcours</a>
+        <a href="#contact" class="nav-cta" data-fr="Me contacter" data-en="Contact" data-ar="تواصل معي">Me contacter</a>
+      </div>
+      <div class="nav-right">
+        <button id="langBtn" class="lang-btn" onclick="toggleLang()">EN</button>
+        <button class="burger" onclick="var n=document.querySelector('.nav-links');n.style.display=(this.dataset.o==='1'?'none':'flex');this.dataset.o=(this.dataset.o==='1'?'0':'1');">≡</button>
+      </div>
     </nav>
+  </div>
+</header>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative h-screen flex items-center bg-slate-900 pt-20 overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 hero-gradient z-10"></div>
-            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80" 
-                 class="w-full h-full object-cover" alt="Modern Office">
+<main>
+
+  <section class="hero" id="hero">
+    <div class="hero-glow"></div>
+    <div class="wrap">
+      <span class="mono">AZ Advisory · Tunis · Freelance</span>
+      <div class="converge reveal">
+        <div class="stream finance">
+          <span data-fr="Comptabilité" data-en="Accounting" data-ar="المحاسبة">Comptabilité</span>
+          <span data-fr="Normes IFRS" data-en="IFRS standards" data-ar="معايير IFRS">Normes IFRS</span>
+          <span data-fr="Clôture &amp; consolidation" data-en="Close &amp; consolidation" data-ar="الإقفال والتجميع">Clôture &amp; consolidation</span>
+          <span data-fr="Contrôle interne" data-en="Internal control" data-ar="الرقابة الداخلية">Contrôle interne</span>
         </div>
-
-        <div class="max-w-7xl mx-auto px-6 relative z-20 grid lg:grid-cols-2 gap-12">
-            <div class="space-y-8">
-                <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-1 text-blue-400 font-semibold text-sm">
-                    <i data-lucide="globe" class="w-4 h-4"></i> Global Microsoft Specialists
-                </div>
-                <h1 class="text-5xl md:text-7xl font-bold text-white leading-[1.1]">
-                    Strategic <span class="text-blue-500 italic">ERP</span> Consulting.
-                </h1>
-                <p class="text-xl text-slate-300 leading-relaxed max-w-xl">
-                    AZAdvisory delivers high-impact **Microsoft Dynamics 365 F&O** implementations. Our professional consulting team ensures your enterprise scales without technical friction.
-                </p>
-                <div class="flex flex-wrap gap-4 pt-4">
-                    <a href="#contact" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-700 flex items-center gap-2 transition group shadow-xl shadow-blue-600/30">
-                        Inquire Now <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition w-5 h-5"></i>
-                    </a>
-                </div>
-                <div class="grid grid-cols-2 gap-6 pt-10 border-t border-white/10">
-                    <div class="flex items-center gap-2 text-slate-400">
-                        <i data-lucide="check-circle-2" class="text-blue-500 w-5 h-5"></i>
-                        <span class="text-sm font-medium">Certified F&O Architects</span>
-                    </div>
-                    <div class="flex items-center gap-2 text-slate-400">
-                        <i data-lucide="check-circle-2" class="text-blue-500 w-5 h-5"></i>
-                        <span class="text-sm font-medium">Agile Methodology</span>
-                    </div>
-                </div>
-            </div>
+        <div class="axis"></div>
+        <div class="stream tech">
+          <span>D365 F&amp;O</span>
+          <span data-fr="Paramétrage" data-en="Configuration" data-ar="الإعداد">Paramétrage</span>
+          <span data-fr="Reprise de données" data-en="Data migration" data-ar="ترحيل البيانات">Reprise de données</span>
+          <span>BI &amp; Copilot</span>
         </div>
-    </section>
+      </div>
+      <h1 class="reveal" data-fr="Expert-comptable <em>et</em> consultant finance sur Dynamics&nbsp;365&nbsp;F&amp;O" data-en="Chartered accountant <em>and</em> finance consultant on Dynamics&nbsp;365&nbsp;F&amp;O" data-ar="خبير محاسب <em>و</em>مستشار مالي على Dynamics&nbsp;365&nbsp;F&amp;O">Expert-comptable <em>et</em> consultant finance sur Dynamics&nbsp;365&nbsp;F&amp;O</h1>
+      <p class="hero-sub reveal" data-fr="Deux métiers, un seul interlocuteur. J'aide les groupes à faire de leur fonction finance un levier de performance sur D365 F&amp;O, de la norme comptable jusqu'au paramétrage du système." data-en="Two professions, one point of contact. I help groups turn their finance function into a performance driver on D365 F&amp;O, from accounting standards to system configuration." data-ar="مهنتان، جهة اتصال واحدة. أساعد المجموعات على تحويل وظيفتها المالية إلى محرّك للأداء على D365 F&amp;O، من المعايير المحاسبية حتى إعداد النظام.">Deux métiers, un seul interlocuteur. J'aide les groupes à faire de leur fonction finance un levier de performance sur D365 F&amp;O, de la norme comptable jusqu'au paramétrage du système.</p>
+      <div class="hero-actions reveal">
+        <a href="#contact" class="btn btn-primary" data-fr="Discuter de votre projet" data-en="Let&#39;s talk about your project" data-ar="لنتحدّث عن مشروعك">Discuter de votre projet</a>
+        <a href="#realisations" class="btn btn-ghost" data-fr="Voir mes réalisations" data-en="See my work" data-ar="اطّلع على إنجازاتي">Voir mes réalisations</a>
+      </div>
+    </div>
+  </section>
 
-    <!-- Services -->
-    <section id="services" class="py-24 px-6 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="max-w-3xl mb-16">
-                <h2 class="text-blue-600 font-bold uppercase tracking-widest text-sm mb-4">What we do</h2>
-                <h3 class="text-4xl font-bold text-slate-900 mb-6 italic">Specialized Microsoft D365 F&O Services</h3>
-                <p class="text-lg text-slate-600">
-                    Exclusively focused on the enterprise-tier Microsoft ecosystem, optimizing financial and supply chain processes for global scale.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 transition-all duration-500">
-                    <div class="bg-white w-16 h-16 rounded-2xl shadow-sm flex items-center justify-center text-blue-600 mb-8">
-                        <i data-lucide="cpu" class="w-8 h-8"></i>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-4">F&O Implementation</h4>
-                    <p class="text-slate-600 leading-relaxed">Full-lifecycle deployment from strategic blueprinting to seamless global go-live and stabilization.</p>
-                </div>
-                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 transition-all duration-500">
-                    <div class="bg-white w-16 h-16 rounded-2xl shadow-sm flex items-center justify-center text-blue-600 mb-8">
-                        <i data-lucide="line-chart" class="w-8 h-8"></i>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-4">Operational Excellence</h4>
-                    <p class="text-slate-600 leading-relaxed">Optimizing supply chains and financial workflows to reduce overhead and increase data transparency.</p>
-                </div>
-                <div class="p-8 rounded-3xl bg-slate-50 border border-slate-100 transition-all duration-500">
-                    <div class="bg-white w-16 h-16 rounded-2xl shadow-sm flex items-center justify-center text-blue-600 mb-8">
-                        <i data-lucide="shield-check" class="w-8 h-8"></i>
-                    </div>
-                    <h4 class="text-2xl font-bold mb-4">Professional Consulting</h4>
-                    <p class="text-slate-600 leading-relaxed">Strategic advisory for enterprise-level digital transformation, change management, and governance.</p>
-                </div>
-            </div>
+  <section class="adn" id="adn">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="mono" data-fr="Ce qui me distingue" data-en="What sets me apart" data-ar="ما يميّزني">Ce qui me distingue</span>
+        <h2 data-fr="Un double ADN, rare sur le marché" data-en="A dual DNA, rare on the market" data-ar="هوية مزدوجة نادرة في السوق">Un double ADN, rare sur le marché</h2>
+        <p data-fr="La plupart des projets D365 échouent à la frontière entre la finance et l'IT. Je me tiens précisément sur cette frontière, et je parle les deux langues." data-en="Most D365 projects fail at the border between finance and IT. I stand exactly on that border, and I speak both languages." data-ar="معظم مشاريع D365 تتعثّر عند الحدّ الفاصل بين المالية وتقنية المعلومات. أقف تحديداً على هذا الحدّ، وأتحدّث اللغتين.">La plupart des projets D365 échouent à la frontière entre la finance et l'IT. Je me tiens précisément sur cette frontière, et je parle les deux langues.</p>
+      </div>
+      <div class="adn-grid reveal">
+        <div class="adn-col fin">
+          <span class="tag" data-fr="L'expert métier" data-en="The domain expert" data-ar="خبير المجال">L'expert métier</span>
+          <h3 data-fr="Le langage des DAF" data-en="The CFO's language" data-ar="لغة المدراء الماليين">Le langage des DAF</h3>
+          <ul>
+            <li data-fr="Comptabilité &amp; consolidation" data-en="Accounting &amp; consolidation" data-ar="المحاسبة والتجميع">Comptabilité &amp; consolidation</li>
+            <li data-fr="Fiscalité &amp; conformité" data-en="Tax &amp; compliance" data-ar="الجباية والامتثال">Fiscalité &amp; conformité</li>
+            <li data-fr="Normes IFRS / normes locales" data-en="IFRS / local standards" data-ar="معايير IFRS والمعايير المحلية">Normes IFRS / normes locales</li>
+            <li data-fr="Contrôle interne &amp; audit" data-en="Internal control &amp; audit" data-ar="الرقابة الداخلية والتدقيق">Contrôle interne &amp; audit</li>
+            <li data-fr="Clôture &amp; reporting financier" data-en="Close &amp; financial reporting" data-ar="الإقفال والتقارير المالية">Clôture &amp; reporting financier</li>
+          </ul>
         </div>
-    </section>
-
-    <!-- Consultants Section -->
-    <section id="consultants" class="py-24 px-6 bg-slate-900 text-white relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 italic">Our Professional Consulting Team</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto text-lg">Senior-level consultants with a proven track record in global Microsoft ERP implementations.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white/5 border border-white/10 p-10 rounded-3xl">
-                    <i data-lucide="users" class="text-blue-500 w-12 h-12 mb-6"></i>
-                    <h4 class="text-2xl font-bold mb-1">Solution Architects</h4>
-                    <p class="text-blue-400 font-semibold mb-6">Enterprise Systems Design</p>
-                    <p class="text-slate-400 leading-relaxed italic">"Expertise in designing robust architectures for complex, multi-entity ERP landscapes."</p>
-                </div>
-                <div class="bg-white/5 border border-white/10 p-10 rounded-3xl">
-                    <i data-lucide="users" class="text-blue-500 w-12 h-12 mb-6"></i>
-                    <h4 class="text-2xl font-bold mb-1">Functional Experts</h4>
-                    <p class="text-blue-400 font-semibold mb-6">Finance & SCM Specialists</p>
-                    <p class="text-slate-400 leading-relaxed italic">"Translating business needs into high-performance Dynamics 365 functional processes."</p>
-                </div>
-                <div class="bg-white/5 border border-white/10 p-10 rounded-3xl">
-                    <i data-lucide="users" class="text-blue-500 w-12 h-12 mb-6"></i>
-                    <h4 class="text-2xl font-bold mb-1">Technical Developers</h4>
-                    <p class="text-blue-400 font-semibold mb-6">X++ & Power Platform</p>
-                    <p class="text-slate-400 leading-relaxed italic">"Delivering seamless integrations and custom development for the modern enterprise."</p>
-                </div>
-            </div>
+        <div class="adn-col tec">
+          <span class="tag" data-fr="L'expert solution" data-en="The solution expert" data-ar="خبير الحلول">L'expert solution</span>
+          <h3 data-fr="Le langage des équipes IT" data-en="The IT team's language" data-ar="لغة فرق تقنية المعلومات">Le langage des équipes IT</h3>
+          <ul>
+            <li>D365 Finance &amp; Operations</li>
+            <li>Business Central</li>
+            <li data-fr="Paramétrage &amp; posting profiles" data-en="Configuration &amp; posting profiles" data-ar="الإعداد وposting profiles">Paramétrage &amp; posting profiles</li>
+            <li data-fr="Reprise de données" data-en="Data migration" data-ar="ترحيل البيانات">Reprise de données</li>
+            <li>Power BI &amp; Copilot</li>
+          </ul>
         </div>
-    </section>
+      </div>
+      <p class="adn-statement reveal" data-fr="Ni un consultant ERP qui a appris la finance, <b>ni un comptable passé à la tech.</b>" data-en="Neither an ERP consultant who learned finance, <b>nor an accountant who moved into tech.</b>" data-ar="لست مستشار ERP تعلّم المالية، <b>ولا محاسباً انتقل إلى التقنية.</b>">Ni un consultant ERP qui a appris la finance, <b>ni un comptable passé à la tech.</b></p>
+    </div>
+  </section>
 
-    <!-- Contact View Only -->
-    <section id="contact" class="py-24 px-6 bg-white">
-        <div class="max-w-4xl mx-auto bg-slate-900 rounded-[3rem] p-12 md:p-20 text-center text-white">
-            <h3 class="text-4xl font-bold mb-8 italic">Get in Touch</h3>
-            <p class="text-slate-400 text-lg mb-12">AZAdvisory is ready to help you navigate your Dynamics 365 journey. Connect with our professional consulting team today.</p>
-            
-            <div class="flex flex-col md:flex-row justify-center items-center gap-12">
-                <div class="flex flex-col items-center">
-                    <div class="bg-blue-600/20 p-4 rounded-2xl mb-4">
-                        <i data-lucide="mail" class="text-blue-500 w-8 h-8"></i>
-                    </div>
-                    <div class="text-xs text-slate-500 font-bold uppercase tracking-widest mb-1">Email Inquiry</div>
-                    <a href="mailto:solutions@azadvisory.com" class="text-2xl hover:text-blue-400 transition">solutions@azadvisory.com</a>
-                </div>
-                <div class="w-px h-16 bg-slate-800 hidden md:block"></div>
-                <div class="flex flex-col items-center">
-                    <div class="bg-blue-600/20 p-4 rounded-2xl mb-4">
-                        <i data-lucide="linkedin" class="text-blue-500 w-8 h-8"></i>
-                    </div>
-                    <div class="text-xs text-slate-500 font-bold uppercase tracking-widest mb-1">Professional Network</div>
-                    <span class="text-2xl">Connect on LinkedIn</span>
-                </div>
-            </div>
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="mono" data-fr="Prestations" data-en="Services" data-ar="الخدمات">Prestations</span>
+        <h2 data-fr="Du cadrage au Go-Live, et après" data-en="From scoping to Go-Live, and beyond" data-ar="من التأطير إلى الإطلاق، وما بعده">Du cadrage au Go-Live, et après</h2>
+        <p data-fr="J'interviens sur l'ensemble du cycle projet D365 F&amp;O, en direct auprès des clients finaux ou en sous-traitance pour des donneurs d'ordre." data-en="I work across the entire D365 F&amp;O project lifecycle, directly with end clients or as a subcontractor." data-ar="أتدخّل في كامل دورة مشروع D365 F&amp;O، مباشرةً مع العملاء النهائيين أو كمقاول من الباطن.">J'interviens sur l'ensemble du cycle projet D365 F&amp;O, en direct auprès des clients finaux ou en sous-traitance pour des donneurs d'ordre.</p>
+      </div>
+      <div class="svc-grid reveal">
+        <div class="svc"><span class="num">01</span><h3 data-fr="AMOA &amp; choix d'ERP" data-en="Business analysis &amp; ERP selection" data-ar="التحليل واختيار ERP">AMOA &amp; choix d'ERP</h3><p data-fr="Analyse des besoins métiers, cadrage, aide au choix de solution et accompagnement maîtrise d'ouvrage." data-en="Business needs analysis, scoping, solution-selection support and project-ownership assistance." data-ar="تحليل الاحتياجات، التأطير، المساعدة في اختيار الحل ومرافقة إدارة المشروع.">Analyse des besoins métiers, cadrage, aide au choix de solution et accompagnement maîtrise d'ouvrage.</p></div>
+        <div class="svc"><span class="num">02</span><h3 data-fr="Étude des processus" data-en="Process study" data-ar="دراسة العمليات">Étude des processus</h3><p data-fr="Cartographie As-Is / To-Be, optimisation et refonte des processus financiers avant mise en place." data-en="As-Is / To-Be mapping, optimisation and redesign of finance processes before implementation." data-ar="رسم الوضع الحالي/المستهدف As-Is / To-Be، تحسين وإعادة تصميم العمليات المالية قبل التنفيذ.">Cartographie As-Is / To-Be, optimisation et refonte des processus financiers avant mise en place.</p></div>
+        <div class="svc"><span class="num">03</span><h3 data-fr="Spécifications fonctionnelles" data-en="Functional specifications" data-ar="المواصفات الوظيفية">Spécifications fonctionnelles</h3><p data-fr="Rédaction des SFD, FRD &amp; FDD, expression de besoin et assistance au client dans la validation des FRD / FDD." data-en="Drafting of SFD, FRD &amp; FDD, requirements definition and client support in validating FRD / FDD." data-ar="صياغة SFD وFRD وFDD، تحديد الاحتياجات ومساعدة العميل في اعتماد FRD / FDD.">Rédaction des SFD, FRD &amp; FDD, expression de besoin et assistance au client dans la validation des FRD / FDD.</p></div>
+        <div class="svc"><span class="num">04</span><h3 data-fr="Paramétrage Finance" data-en="Finance configuration" data-ar="إعداد المالية">Paramétrage Finance</h3><p data-fr="GL, AP, AR, Cash &amp; Bank, Fixed Assets, Taxe / TVA, Budgeting. Schémas comptables, posting profiles et écritures automatiques des flux achats, ventes, stock et production." data-en="GL, AP, AR, Cash &amp; Bank, Fixed Assets, Tax / VAT, Budgeting. Accounting schemas, posting profiles and automatic entries for purchase, sales, inventory and production flows." data-ar="GL, AP, AR, Cash &amp; Bank, Fixed Assets, الضريبة/TVA, Budgeting. مخططات محاسبية وposting profiles والقيود الآلية لتدفقات الشراء والبيع والمخزون والإنتاج.">GL, AP, AR, Cash &amp; Bank, Fixed Assets, Taxe / TVA, Budgeting. Schémas comptables, posting profiles et écritures automatiques des flux achats, ventes, stock et production.</p></div>
+        <div class="svc"><span class="num">05</span><h3 data-fr="Codification des référentiels" data-en="Master data coding" data-ar="ترميز المراجع">Codification des référentiels</h3><p data-fr="Structuration et codification des immobilisations, stocks, fournisseurs et clients. Séquences de numérotation." data-en="Structuring and coding of fixed assets, inventory, vendors and customers. Number sequences." data-ar="هيكلة وترميز الأصول الثابتة والمخزون والموردين والعملاء. تسلسلات الترقيم.">Structuration et codification des immobilisations, stocks, fournisseurs et clients. Séquences de numérotation.</p></div>
+        <div class="svc"><span class="num">06</span><h3 data-fr="Reprise de données" data-en="Data migration" data-ar="ترحيل البيانات">Reprise de données</h3><p data-fr="Migration, mapping, contrôle d'intégrité et fiabilisation des balances de reprise." data-en="Migration, mapping, integrity checks and reconciliation of opening balances." data-ar="الترحيل، الربط، مراقبة السلامة وموثوقية أرصدة الافتتاح.">Migration, mapping, contrôle d'intégrité et fiabilisation des balances de reprise.</p></div>
+        <div class="svc"><span class="num">07</span><h3 data-fr="Interfaçage" data-en="Interfacing" data-ar="الربط البيني">Interfaçage</h3><p data-fr="Intégration de D365 F&amp;O avec les solutions tierces et verticaux métier : flux, mapping, rédaction des interfaces." data-en="Integration of D365 F&amp;O with third-party and industry solutions: flows, mapping, interface specifications." data-ar="دمج D365 F&amp;O مع الحلول الخارجية والقطاعية: التدفقات، الربط، صياغة الواجهات.">Intégration de D365 F&amp;O avec les solutions tierces et verticaux métier : flux, mapping, rédaction des interfaces.</p></div>
+        <div class="svc"><span class="num">08</span><h3 data-fr="Rôles &amp; sécurité D365" data-en="D365 roles &amp; security" data-ar="الأدوار والأمان في D365">Rôles &amp; sécurité D365</h3><p data-fr="Conception et préparation des rôles de sécurité, séparation des tâches et matrice d'habilitations." data-en="Design and setup of security roles, segregation of duties and access matrix." data-ar="تصميم وإعداد أدوار الأمان، الفصل بين المهام ومصفوفة الصلاحيات.">Conception et préparation des rôles de sécurité, séparation des tâches et matrice d'habilitations.</p></div>
+        <div class="svc"><span class="num">09</span><h3 data-fr="Reporting &amp; BI" data-en="Reporting &amp; BI" data-ar="التقارير وBI">Reporting &amp; BI</h3><p data-fr="Financial Reports natifs et sur besoin, optimisation des états financiers, tableaux de bord BI consolidés." data-en="Native and custom Financial Reports, financial-statement optimisation, consolidated BI dashboards." data-ar="تقارير مالية أصلية وحسب الطلب، تحسين القوائم المالية، لوحات BI موحّدة.">Financial Reports natifs et sur besoin, optimisation des états financiers, tableaux de bord BI consolidés.</p></div>
+        <div class="svc"><span class="num">10</span><h3 data-fr="Facturation électronique" data-en="Electronic invoicing" data-ar="الفوترة الإلكترونية">Facturation électronique</h3><p data-fr="Mise en conformité à la réforme e-invoicing / e-reporting : Plateforme Agréée, flux et obligations fiscales." data-en="Compliance with the e-invoicing / e-reporting reform: accredited platform, flows and tax obligations." data-ar="الامتثال لإصلاح الفوترة الإلكترونية e-invoicing / e-reporting: المنصة المعتمدة، التدفقات والالتزامات الجبائية.">Mise en conformité à la réforme e-invoicing / e-reporting : Plateforme Agréée, flux et obligations fiscales.</p></div>
+        <div class="svc"><span class="num">11</span><h3 data-fr="Audit &amp; diagnostic" data-en="Audit &amp; diagnostic" data-ar="التدقيق والتشخيص">Audit &amp; diagnostic</h3><p data-fr="Audit complet et diagnostic, revue du paramétrage livré par les intégrateurs, recommandations correctives." data-en="Full audit and diagnostic, review of integrator-delivered configuration, corrective recommendations." data-ar="تدقيق كامل وتشخيص، مراجعة الإعداد المنجز من قبل المدمجين، توصيات تصحيحية.">Audit complet et diagnostic, revue du paramétrage livré par les intégrateurs, recommandations correctives.</p></div>
+        <div class="svc"><span class="num">12</span><h3 data-fr="Go-Live &amp; mise en place" data-en="Go-Live &amp; deployment" data-ar="الإطلاق والتنفيذ">Go-Live &amp; mise en place</h3><p data-fr="Préparation à la mise en place, pilotage du démarrage, formation des équipes et support post-implémentation." data-en="Deployment preparation, Go-Live management, team training and post-implementation support." data-ar="التحضير للتنفيذ، قيادة الإطلاق، تدريب الفرق والدعم بعد التنفيذ.">Préparation à la mise en place, pilotage du démarrage, formation des équipes et support post-implémentation.</p></div>
+      </div>
+
+      <div class="spotlight reveal">
+        <span class="mono" data-fr="Spécialité" data-en="Signature expertise" data-ar="تخصّص">Spécialité</span>
+        <h3 data-fr="Mise en place de la clôture intelligente" data-en="Setting up the intelligent close" data-ar="إرساء الإقفال الذكي">Mise en place de la clôture intelligente</h3>
+        <p data-fr="Automatisation de la clôture financière par l'IA dans D365 F&amp;O : Copilot, agents de rapprochement (Account Reconciliation Agent) et Financial Period Close Workspace. Le cœur de mon expertise, et le sujet de mon mémoire d'expertise comptable." data-en="AI-driven automation of the financial close in D365 F&amp;O: Copilot, reconciliation agents (Account Reconciliation Agent) and the Financial Period Close Workspace. The core of my expertise, and the topic of my chartered-accountancy thesis." data-ar="أتمتة الإقفال المالي بالذكاء الاصطناعي في D365 F&amp;O: Copilot، وكلاء التسوية (Account Reconciliation Agent) وFinancial Period Close Workspace. جوهر خبرتي، وموضوع مذكّرة خبير المحاسبة.">Automatisation de la clôture financière par l'IA dans D365 F&amp;O : Copilot, agents de rapprochement (Account Reconciliation Agent) et Financial Period Close Workspace. Le cœur de mon expertise, et le sujet de mon mémoire d'expertise comptable.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="real" id="realisations">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="mono" data-fr="Réalisations" data-en="Case studies" data-ar="الإنجازات">Réalisations</span>
+        <h2 data-fr="Des projets livrés sur plusieurs secteurs" data-en="Projects delivered across multiple sectors" data-ar="مشاريع منجزة في عدّة قطاعات">Des projets livrés sur plusieurs secteurs</h2>
+        <p data-fr="Missions menées en France, au Maghreb et en Afrique francophone. Par respect de la confidentialité, les clients sont présentés par secteur." data-en="Assignments delivered in France, the Maghreb and French-speaking Africa. For confidentiality, clients are presented by sector." data-ar="مهام أُنجزت في فرنسا والمغرب العربي وإفريقيا الفرنكوفونية. حفاظاً على السرية، يُعرض العملاء حسب القطاع.">Missions menées en France, au Maghreb et en Afrique francophone. Par respect de la confidentialité, les clients sont présentés par secteur.</p>
+      </div>
+      <div class="real-grid reveal">
+        <div class="rcard">
+          <div class="rtop"><span class="sector" data-fr="Distribution automobile · Afrique" data-en="Automotive distribution · Africa" data-ar="توزيع السيارات · إفريقيا">Distribution automobile · Afrique</span><span class="year">2024</span></div>
+          <h3 data-fr="Go-Live D365 F&amp;O multi-pays" data-en="Multi-country D365 F&amp;O Go-Live" data-ar="إطلاق D365 F&amp;O متعدّد الدول">Go-Live D365 F&amp;O multi-pays</h3>
+          <p data-fr="Lead Finance sur le déploiement multi-entités d'un grand groupe de distribution automobile (Afrique de l'Ouest &amp; Centrale) : configuration Finance, validation des processus, support sur site." data-en="Finance Lead on the multi-entity rollout of a major automotive distribution group (West &amp; Central Africa): Finance configuration, process validation, on-site support." data-ar="قيادة مالية في نشر متعدّد الكيانات لمجموعة كبرى لتوزيع السيارات (غرب ووسط إفريقيا): إعداد المالية، اعتماد العمليات، الدعم الميداني.">Lead Finance sur le déploiement multi-entités d'un grand groupe de distribution automobile (Afrique de l'Ouest &amp; Centrale) : configuration Finance, validation des processus, support sur site.</p>
+          <div class="tags"><span>D365 F&amp;O</span><span>Go-Live</span><span>GL / AP / AR</span></div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-12 px-6 border-t bg-slate-50 text-center">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex items-center justify-center gap-2 text-xl font-bold mb-4">
-                <div class="bg-blue-700 p-1.5 rounded-lg">
-                    <i data-lucide="building-2" class="text-white w-4 h-4"></i>
-                </div>
-                <span>AZ<span class="text-blue-600">ADVISORY</span></span>
-            </div>
-            <div class="text-slate-400 text-sm italic">Microsoft Dynamics 365 F&O Professional Consulting</div>
-            <div class="text-slate-400 text-xs mt-8 uppercase tracking-widest">© 2026 AZAdvisory. All rights reserved.</div>
+        <div class="rcard">
+          <div class="rtop"><span class="sector" data-fr="Agroalimentaire · France" data-en="Agri-food · France" data-ar="الصناعات الغذائية · فرنسا">Agroalimentaire · France</span><span class="year">2025-26</span></div>
+          <h3 data-fr="Migration &amp; consolidation groupe" data-en="Group migration &amp; consolidation" data-ar="الترحيل والتجميع على مستوى المجموعة">Migration &amp; consolidation groupe</h3>
+          <p data-fr="Groupe agroalimentaire européen : migration de données, consolidation au niveau groupe, recette des développements et fiabilisation des rapports financiers." data-en="European agri-food group: data migration, group-level consolidation, development testing and reliability of financial reports." data-ar="مجموعة أوروبية للصناعات الغذائية: ترحيل البيانات، التجميع على مستوى المجموعة، اختبار التطويرات وموثوقية التقارير المالية.">Groupe agroalimentaire européen : migration de données, consolidation au niveau groupe, recette des développements et fiabilisation des rapports financiers.</p>
+          <div class="tags"><span data-fr="Migration" data-en="Migration" data-ar="الترحيل">Migration</span><span data-fr="Consolidation" data-en="Consolidation" data-ar="التجميع">Consolidation</span><span data-fr="Recette" data-en="UAT" data-ar="الاختبار">Recette</span></div>
         </div>
-    </footer>
+        <div class="rcard">
+          <div class="rtop"><span class="sector" data-fr="Conglomérat · Multi-secteurs" data-en="Conglomerate · Multi-sector" data-ar="تكتّل · متعدّد القطاعات">Conglomérat · Multi-secteurs</span><span class="year">2025&rarr;</span></div>
+          <h3 data-fr="Architecture Finance &amp; multi-ERP" data-en="Finance architecture &amp; multi-ERP" data-ar="هندسة مالية وERP متعدّد">Architecture Finance &amp; multi-ERP</h3>
+          <p data-fr="Conglomérat privé (24 sociétés) : plan de comptes commun, dispositif de consolidation, paramétrage D365 F&amp;O et Business Central, clôtures et BI consolidé." data-en="Private conglomerate (24 companies): common chart of accounts, consolidation framework, D365 F&amp;O and Business Central configuration, closes and consolidated BI." data-ar="تكتّل خاص (24 شركة): دليل حسابات موحّد، منظومة تجميع، إعداد D365 F&amp;O وBusiness Central، إقفالات وBI موحّد.">Conglomérat privé (24 sociétés) : plan de comptes commun, dispositif de consolidation, paramétrage D365 F&amp;O et Business Central, clôtures et BI consolidé.</p>
+          <div class="tags"><span data-fr="COA Group" data-en="Group COA" data-ar="دليل الحسابات">COA Group</span><span>Business Central</span><span>BI</span></div>
+        </div>
+        <div class="rcard">
+          <div class="rtop"><span class="sector" data-fr="Retail · Multi-magasins" data-en="Retail · Multi-store" data-ar="تجزئة · متعدّد المتاجر">Retail · Multi-magasins</span><span class="year">2025</span></div>
+          <h3 data-fr="Déploiement Business Central Retail" data-en="Business Central Retail rollout" data-ar="نشر Business Central Retail">Déploiement Business Central Retail</h3>
+          <p data-fr="Chaîne de distribution alimentaire (20+ points de vente) : déploiement Business Central LS Retail, clôtures et comptabilité des stocks en environnement multi-magasins." data-en="Food retail chain (20+ stores): Business Central LS Retail rollout, closes and inventory accounting in a multi-store environment." data-ar="سلسلة توزيع غذائي (+20 نقطة بيع): نشر Business Central LS Retail، إقفالات ومحاسبة المخزون في بيئة متعدّدة المتاجر.">Chaîne de distribution alimentaire (20+ points de vente) : déploiement Business Central LS Retail, clôtures et comptabilité des stocks en environnement multi-magasins.</p>
+          <div class="tags"><span>Business Central</span><span>LS Retail</span><span data-fr="Stocks" data-en="Inventory" data-ar="المخزون">Stocks</span></div>
+        </div>
+        <div class="rcard">
+          <div class="rtop"><span class="sector" data-fr="Énergie · Production pétrolière" data-en="Energy · Oil production" data-ar="طاقة · إنتاج نفطي">Énergie · Production pétrolière</span><span class="year">2025-26</span></div>
+          <h3 data-fr="Audit système D365 &amp; conformité" data-en="D365 system audit &amp; compliance" data-ar="تدقيق نظام D365 والامتثال">Audit système D365 &amp; conformité</h3>
+          <p data-fr="Audit complet d'un environnement D365 : revue des configurations et des processus financiers, identification des écarts, conformité et fiabilisation du reporting." data-en="Full audit of a D365 environment: review of configuration and finance processes, gap identification, compliance and reporting reliability." data-ar="تدقيق كامل لبيئة D365: مراجعة الإعدادات والعمليات المالية، تحديد الفجوات، الامتثال وموثوقية التقارير.">Audit complet d'un environnement D365 : revue des configurations et des processus financiers, identification des écarts, conformité et fiabilisation du reporting.</p>
+          <div class="tags"><span>Audit D365</span><span data-fr="Contrôle interne" data-en="Internal control" data-ar="الرقابة الداخلية">Contrôle interne</span><span data-fr="Conformité" data-en="Compliance" data-ar="الامتثال">Conformité</span></div>
+        </div>
+        <div class="rcard">
+          <div class="rtop"><span class="sector" data-fr="Industrie · Après-vente auto" data-en="Industry · Automotive aftermarket" data-ar="صناعة · قطع غيار السيارات">Industrie · Après-vente auto</span><span class="year">2022-24</span></div>
+          <h3 data-fr="Implémentation D365 F&amp;O from scratch" data-en="D365 F&amp;O implementation from scratch" data-ar="تنفيذ D365 F&amp;O من الصفر">Implémentation D365 F&amp;O from scratch</h3>
+          <p data-fr="Fabricant de filtres pour l'après-vente automobile : rédaction FRD/FDD, migration des données, tests et validation des configurations, formation des utilisateurs." data-en="Manufacturer of automotive aftermarket filters: FRD/FDD drafting, data migration, testing and configuration validation, user training." data-ar="مُصنّع فلاتر لقطع غيار السيارات: صياغة FRD/FDD، ترحيل البيانات، اختبار واعتماد الإعدادات، تدريب المستخدمين.">Fabricant de filtres pour l'après-vente automobile : rédaction FRD/FDD, migration des données, tests et validation des configurations, formation des utilisateurs.</p>
+          <div class="tags"><span data-fr="Implémentation" data-en="Implementation" data-ar="التنفيذ">Implémentation</span><span>FRD / FDD</span><span data-fr="Formation" data-en="Training" data-ar="التدريب">Formation</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        lucide.createIcons();
+  <section id="parcours">
+    <div class="wrap">
+      <div class="par-intro reveal">
+        <img class="portrait" src="data:image/jpeg;base64,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" alt="Aymen Zouiten">
+        <div class="pi-txt">
+          <span class="mono" data-fr="Parcours" data-en="Background" data-ar="المسار">Parcours</span>
+          <h2 data-fr="Du chiffre au système" data-en="From the numbers to the system" data-ar="من الرقم إلى النظام">Du chiffre au système</h2>
+          <p data-fr="Aymen Zouiten, expert-comptable et consultant finance D365 F&amp;O. J'ai débuté en audit financier avant de me spécialiser dans la transformation de la fonction finance sur Dynamics 365." data-en="Aymen Zouiten, chartered accountant and D365 F&amp;O finance consultant. I started in financial audit before specialising in finance transformation on Dynamics 365." data-ar="أيمن زويتن، خبير محاسب ومستشار مالي في D365 F&amp;O. بدأت في التدقيق المالي قبل التخصّص في تحويل الوظيفة المالية على Dynamics 365.">Aymen Zouiten, expert-comptable et consultant finance D365 F&amp;O. J'ai débuté en audit financier avant de me spécialiser dans la transformation de la fonction finance sur Dynamics 365.</p>
+        </div>
+      </div>
+      <div class="par-grid reveal">
+        <div class="par-list">
+          <div class="par-item">
+            <span class="py">2025 &rarr;</span>
+            <div>
+              <h3 data-fr="AZ Advisory · Consultant Finance D365 F&amp;O (Freelance)" data-en="AZ Advisory · Finance Consultant D365 F&amp;O (Freelance)" data-ar="AZ Advisory · مستشار مالي D365 F&amp;O (مستقل)">AZ Advisory · Consultant Finance D365 F&amp;O (Freelance)</h3>
+              <p data-fr="Personne physique patentée. Missions D365 F&amp;O / Business Central en direct et en sous-traitance. France, Maghreb, Afrique francophone." data-en="Registered sole trader. D365 F&amp;O / Business Central assignments, direct and as a subcontractor. France, Maghreb, French-speaking Africa." data-ar="شخص طبيعي مرخّص. مهام D365 F&amp;O / Business Central مباشرةً وكمقاول من الباطن. فرنسا، المغرب العربي، إفريقيا الفرنكوفونية.">Personne physique patentée. Missions D365 F&amp;O / Business Central en direct et en sous-traitance. France, Maghreb, Afrique francophone.</p>
+            </div>
+          </div>
+          <div class="par-item">
+            <span class="py">2023-25</span>
+            <div>
+              <h3 data-fr="KPMG Tech Solutions" data-en="KPMG Tech Solutions" data-ar="KPMG Tech Solutions">KPMG Tech Solutions</h3>
+              <p data-fr="Consultant Finance D365 F&amp;O. Implémentations from scratch et Lead Finance sur un Go-Live multi-pays en Afrique." data-en="D365 F&amp;O Finance Consultant. From-scratch implementations and Finance Lead on a multi-country Go-Live in Africa." data-ar="مستشار مالي D365 F&amp;O. عمليات تنفيذ من الصفر وقيادة مالية على إطلاق متعدّد الدول في إفريقيا.">Consultant Finance D365 F&amp;O. Implémentations from scratch et Lead Finance sur un Go-Live multi-pays en Afrique.</p>
+            </div>
+          </div>
+          <div class="par-item">
+            <span class="py">2020-23</span>
+            <div>
+              <h3 data-fr="PwC · Audit financier" data-en="PwC · Financial audit" data-ar="PwC · التدقيق المالي">PwC · Audit financier</h3>
+              <p data-fr="Senior Auditor : commissariat aux comptes, contrôle interne, revue fiscale et consolidation IFRS pour des groupes industriels et internationaux." data-en="Senior Auditor: statutory audit, internal control, tax review and IFRS consolidation for industrial and international groups." data-ar="مدقّق أول: تدقيق قانوني، رقابة داخلية، مراجعة جبائية وتجميع وفق IFRS لمجموعات صناعية ودولية.">Senior Auditor : commissariat aux comptes, contrôle interne, revue fiscale et consolidation IFRS pour des groupes industriels et internationaux.</p>
+            </div>
+          </div>
+        </div>
+        <div class="creds">
+          <span class="mono" data-fr="Diplômes &amp; certifications" data-en="Degrees &amp; certifications" data-ar="الشهادات والاعتمادات">Diplômes &amp; certifications</span>
+          <ul>
+            <li data-fr="Expert-comptable diplômé (DEC)<span>FSEG Sfax · Mention Très Bien (19/20) · Membre OECT</span>" data-en="Chartered Accountant (DEC diploma)<span>FSEG Sfax · Highest honours (19/20) · OECT member</span>" data-ar="خبير محاسب مُجاز (DEC)<span>FSEG صفاقس · بتقدير ممتاز (19/20) · عضو OECT</span>">Expert-comptable diplômé (DEC)<span>FSEG Sfax · Mention Très Bien (19/20) · Membre OECT</span></li>
+            <li data-fr="MB-310 · Microsoft Certified<span>Dynamics 365 Finance Functional Consultant</span>" data-en="MB-310 · Microsoft Certified<span>Dynamics 365 Finance Functional Consultant</span>" data-ar="MB-310 · Microsoft Certified<span>Dynamics 365 Finance Functional Consultant</span>">MB-310 · Microsoft Certified<span>Dynamics 365 Finance Functional Consultant</span></li>
+            <li data-fr="Certificat IFRS<span>Université Paris-Dauphine PSL</span>" data-en="IFRS Certificate<span>Université Paris-Dauphine PSL</span>" data-ar="شهادة IFRS<span>Université Paris-Dauphine PSL</span>">Certificat IFRS<span>Université Paris-Dauphine PSL</span></li>
+            <li data-fr="Master Droit Fiscal &amp; Contentieux<span>FSJES Tunis</span>" data-en="Master's in Tax Law &amp; Litigation<span>FSJES Tunis</span>" data-ar="ماجستير في القانون الجبائي والمنازعات<span>FSJES Tunis</span>">Master Droit Fiscal &amp; Contentieux<span>FSJES Tunis</span></li>
+            <li data-fr="CES Révision Comptable<span>IHEC Carthage</span>" data-en="Advanced Certificate in Auditing (CES)<span>IHEC Carthage</span>" data-ar="شهادة الدراسات العليا في مراجعة الحسابات<span>IHEC Carthage</span>">CES Révision Comptable<span>IHEC Carthage</span></li>
+            <li data-fr="Master Révision Comptable<span>ISG Sousse</span>" data-en="Master's in Auditing<span>ISG Sousse</span>" data-ar="ماجستير في مراجعة الحسابات<span>ISG Sousse</span>">Master Révision Comptable<span>ISG Sousse</span></li>
+            <li data-fr="Licence Comptabilité<span>ISG Sousse</span>" data-en="Bachelor's in Accounting<span>ISG Sousse</span>" data-ar="الإجازة في المحاسبة<span>ISG Sousse</span>">Licence Comptabilité<span>ISG Sousse</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="research reveal">
+        <div class="rscard">
+          <span class="mono" data-fr="Mémoire · Expertise comptable (DEC)" data-en="Thesis · Chartered accountancy (DEC)" data-ar="مذكّرة · خبرة محاسبية (DEC)">Mémoire · Expertise comptable (DEC)</span>
+          <h3 data-fr="Clôture intelligente à l'ère des ERP et de l'IA" data-en="Intelligent close in the era of ERP and AI" data-ar="الإقفال الذكي في عصر أنظمة ERP والذكاء الاصطناعي">Clôture intelligente à l'ère des ERP et de l'IA</h3>
+          <p data-fr="« L'apport de l'expert-comptable à la clôture intelligente à l'ère des ERP et de l'IA : cas de Microsoft Dynamics 365 Finance &amp; Operations. » Le sujet même qui fonde mon positionnement : le rôle de l'expert-comptable dans l'automatisation de la clôture." data-en="&ldquo;The chartered accountant's contribution to the intelligent close in the era of ERP and AI: the case of Microsoft Dynamics 365 Finance &amp; Operations.&rdquo; The very topic that grounds my positioning: the accountant's role in close automation." data-ar="«إسهام خبير المحاسبة في الإقفال الذكي في عصر أنظمة ERP والذكاء الاصطناعي: حالة Microsoft Dynamics 365 Finance &amp; Operations.» الموضوع الذي يؤسّس لتموضعي: دور خبير المحاسبة في أتمتة الإقفال.">« L'apport de l'expert-comptable à la clôture intelligente à l'ère des ERP et de l'IA : cas de Microsoft Dynamics 365 Finance &amp; Operations. » Le sujet même qui fonde mon positionnement : le rôle de l'expert-comptable dans l'automatisation de la clôture.</p>
+        </div>
+        <div class="rscard">
+          <span class="mono" data-fr="Mémoire · Droit fiscal" data-en="Thesis · Tax law" data-ar="مذكّرة · القانون الجبائي">Mémoire · Droit fiscal</span>
+          <h3 data-fr="Digitalisation &amp; obligations fiscales" data-en="Digitalisation &amp; tax obligations" data-ar="الرقمنة والالتزامات الجبائية">Digitalisation &amp; obligations fiscales</h3>
+          <p data-fr="« L'impact de l'automatisation et de la digitalisation sur les obligations fiscales du contribuable : cas de D365 F&amp;O. » Étude appliquée du module Taxe : déclaration d'employeur, TVA en suspension, TVA due, retenues à la source." data-en="&ldquo;The impact of automation and digitalisation on the taxpayer's obligations: the case of D365 F&amp;O.&rdquo; Applied study of the Tax module: employer return, suspended VAT, VAT due, withholding taxes." data-ar="«أثر الأتمتة والرقمنة على الالتزامات الجبائية للمكلّف: حالة D365 F&amp;O.» دراسة تطبيقية لوحدة الضريبة: تصريح المؤجر، الأداء على القيمة المضافة الموقوف والمستحق، الخصم من المصدر.">« L'impact de l'automatisation et de la digitalisation sur les obligations fiscales du contribuable : cas de D365 F&amp;O. » Étude appliquée du module Taxe : déclaration d'employeur, TVA en suspension, TVA due, retenues à la source.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        const navbar = document.getElementById('navbar');
-        const navLogo = document.getElementById('nav-logo');
-        const navLinks = document.querySelectorAll('.nav-link');
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <span class="mono reveal" data-fr="Prise de contact" data-en="Get in touch" data-ar="تواصل">Prise de contact</span>
+      <h2 class="reveal" data-fr="Un projet D365 <em>ou</em> une clôture à fiabiliser ?" data-en="A D365 project <em>or</em> a close to secure?" data-ar="مشروع D365 <em>أو</em> إقفال بحاجة إلى موثوقية؟">Un projet D365 <em>ou</em> une clôture à fiabiliser ?</h2>
+      <p class="lead reveal" data-fr="Parlons-en. Je réponds vite, et je vous dis franchement si je suis la bonne personne pour votre besoin." data-en="Let's talk. I reply quickly, and I'll tell you honestly whether I'm the right fit for your need." data-ar="لنتحدّث. أردّ بسرعة، وأخبرك بصراحة إن كنت الشخص المناسب لحاجتك.">Parlons-en. Je réponds vite, et je vous dis franchement si je suis la bonne personne pour votre besoin.</p>
+      <div class="contact-methods reveal">
+        <a class="cmethod" href="mailto:azouiten@azadvisory.net"><span class="mono" data-fr="Email" data-en="Email" data-ar="البريد">Email</span><span class="val" dir="ltr">azouiten@azadvisory.net</span></a>
+        <a class="cmethod" href="https://wa.me/21653118506" target="_blank" rel="noopener"><span class="mono" data-fr="WhatsApp" data-en="WhatsApp" data-ar="واتساب">WhatsApp</span><span class="val" dir="ltr">+216 53 118 506</span></a>
+        <a class="cmethod" href="https://www.linkedin.com/in/aymenzouiten-1ab26713a" target="_blank" rel="noopener"><span class="mono">LinkedIn</span><span class="val">Aymen Zouiten</span></a>
+        <div class="cmethod"><span class="mono" data-fr="Basé à" data-en="Based in" data-ar="المقر">Basé à</span><span class="val" data-fr="Tunis · Remote &amp; déplacements" data-en="Tunis · Remote &amp; travel" data-ar="تونس · عن بُعد وتنقّلات">Tunis · Remote &amp; déplacements</span></div>
+      </div>
+    </div>
+  </section>
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('glass-nav', 'shadow-md', 'py-3');
-                navbar.classList.remove('py-5');
-                navLogo.classList.add('text-slate-900');
-                navLogo.classList.remove('text-white');
-                navLinks.forEach(link => link.classList.replace('text-slate-100', 'text-slate-600'));
-                document.getElementById('menu-btn').classList.replace('text-white', 'text-slate-900');
-            } else {
-                navbar.classList.remove('glass-nav', 'shadow-md', 'py-3');
-                navbar.classList.add('py-5');
-                navLogo.classList.remove('text-slate-900');
-                navLogo.classList.add('text-white');
-                navLinks.forEach(link => link.classList.replace('text-slate-600', 'text-slate-100'));
-                document.getElementById('menu-btn').classList.replace('text-slate-900', 'text-white');
-            }
-        });
+</main>
 
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+<footer>
+  <div class="wrap foot">
+    <span class="brand">AZ<b style="color:var(--gold)">·</b>ADVISORY</span>
+    <p data-fr="Aymen Zouiten · Expert-comptable &amp; Consultant D365 F&amp;O · azadvisory.net" data-en="Aymen Zouiten · Chartered Accountant &amp; D365 F&amp;O Consultant · azadvisory.net" data-ar="أيمن زويتن · خبير محاسب ومستشار D365 F&amp;O · azadvisory.net">Aymen Zouiten · Expert-comptable &amp; Consultant D365 F&amp;O · azadvisory.net</p>
+  </div>
+</footer>
 
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-        });
-    </script>
+<script>
+  var hd=document.getElementById('hd');
+  addEventListener('scroll',function(){hd.classList.toggle('scrolled',scrollY>20)});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+  var LANGS=['fr','en','ar'];
+  function applyLang(l){
+    document.querySelectorAll('[data-fr]').forEach(function(e){
+      var v=e.getAttribute('data-'+l); if(v===null)v=e.getAttribute('data-fr');
+      e.innerHTML=v;
+    });
+    document.documentElement.lang=l;
+    document.documentElement.dir=(l==='ar')?'rtl':'ltr';
+    var b=document.getElementById('langBtn');
+    if(b){var nxt={fr:'EN',en:'عربي',ar:'FR'};b.textContent=nxt[l];}
+    try{localStorage.setItem('azlang',l);}catch(err){}
+  }
+  function toggleLang(){
+    var cur=document.documentElement.lang; if(LANGS.indexOf(cur)<0)cur='fr';
+    applyLang(LANGS[(LANGS.indexOf(cur)+1)%3]);
+  }
+  (function(){var s='fr';try{s=localStorage.getItem('azlang')||'fr';}catch(e){}applyLang(s);})();
+</script>
 </body>
 </html>
